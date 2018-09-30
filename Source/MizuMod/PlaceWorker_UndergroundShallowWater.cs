@@ -17,7 +17,7 @@ namespace MizuMod
             {
                 if (this.waterGrid == null)
                 {
-                    Map visibleMap = Find.VisibleMap;
+                    Map visibleMap = Find.CurrentMap;
                     this.waterGrid = visibleMap.GetComponent<MapComponent_ShallowWaterGrid>();
                 }
                 return this.waterGrid;

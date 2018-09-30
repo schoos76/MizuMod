@@ -695,14 +695,14 @@
         <li>Mizu_Waters</li>
         <li>Mizu_Ices</li>
       </categories>
-      <exceptedThingDefs>
+      <disallowedThingDefs>
         <li>Mizu_RawWater</li>
         <li>Mizu_MudWater</li>
         <li>Mizu_SeaWater</li>
         <li>Mizu_RawIce</li>
         <li>Mizu_MudIce</li>
         <li>Mizu_SeaIce</li>
-      </exceptedThingDefs>
+      </disallowedThingDefs>
     </defaultIngredientFilter>
     <products>
       <Mizu_ShavedIce>1</Mizu_ShavedIce>

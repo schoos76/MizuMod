@@ -636,7 +636,7 @@ namespace MizuMod
             float animalFactor = getter.RaceProps.Humanlike ? 1f : 0.1f; // 動物は1/10に抑える
             if (Rand.Value < waterTypeDef.foodPoisonChance * animalFactor)
             {
-                FoodUtility.AddFoodPoisoningHediff(getter, thing);
+                FoodUtility.AddFoodPoisoningHediff(getter, thing, FoodPoisonCause.Unknown);
             }
 
             int drankWaterItemCount;

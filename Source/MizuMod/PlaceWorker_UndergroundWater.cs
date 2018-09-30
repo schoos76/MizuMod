@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Verse;
+using UnityEngine;
 
 namespace MizuMod
 {
@@ -11,7 +12,7 @@ namespace MizuMod
     {
         public abstract MapComponent_WaterGrid WaterGrid { get; }
 
-        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot)
+        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol)
         {
             this.WaterGrid.MarkForDraw();
         }

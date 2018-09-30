@@ -13,7 +13,7 @@ namespace MizuMod
         private const int DrawTicks = 500;
         private const TargetIndex DrawerIndex = TargetIndex.A;
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return this.pawn.Reserve(this.job.targetA, this.job);
         }

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>No Water, No Life.</name>
-  <author>himesama</author>
-  <targetVersion>0.18.1722</targetVersion>
-  <url>https://github.com/himesama1301/MizuMod</url>
+  <name>No Water, No Life [B19] </name>
+  <author>himesama, schoos</author>
+  <targetVersion>0.19.2009</targetVersion>
+  <url>https://github.com/schoos76/MizuMod</url>
   <description>
 
-for RimWorld B18
-mod version 1.5.4
+for RimWorld B19
+mod version 1.6.0
 
 Description
 
@@ -16,7 +16,7 @@ This mod should NOT be applied to saved games.
 
 Direct download from github
 
-https://github.com/himesama1301/MizuMod/releases
+https://github.com/schoos76/MizuMod/releases
 
 Please click "Source code (zip)" of the version what you want.
 The downloaded zip file contains all the data as well as the source code.
@@ -25,48 +25,20 @@ License
 
 This mod includes the following
 - Harmony (MIT License)
-- ModCheck (LGPL v3.0)
+
+This mod depends on ModCheck mod.
 
 The other files are licensed under the Unlicense. 
-https://github.com/himesama1301/MizuMod/blob/master/LICENSE_Unlicense
+https://github.com/schoos76/MizuMod/blob/master/LICENSE_Unlicense
 
 Contributors
 
+himesama1301 (Original creator of this mod)
 Valerate (VGP_Core and VGP_Gourmet patch)
 Dango998 (ChineseSimplified, ChineseTraditional translation)
 Firty (PortugueseBrazilian translation)
+Oblivionburn (Most of the B19 XML changes)
 
-
-
-(Japanese)
-
-概要
-
-ポーンの要求に水分を追加し、水を得るための様々な手段を追加します。
-井戸、ポンプ、水道管、蛇口、浄水器などが追加されます。
-このMODを途中から導入することは推奨しません。
-
-githubからダウンロード
-
-https://github.com/himesama1301/MizuMod/releases
-
-欲しいバージョンの"Source code (zip)"をクリックしてください。
-ダウンロードしたzipファイルにはソースコードだけでなく全てのデータが含まれています。
-
-ライセンス
-
-このMODには以下のものが含まれています。
-- Harmony (MITライセンス)
-- ModCheck (LGPL v3.0)
-
-その他のファイルはUnlicenseの下にリリースされています。
-https://github.com/himesama1301/MizuMod/blob/master/LICENSE_Unlicense
-
-ご協力
-
-Valerate (VGP_Core and VGP_Gourmet パッチ)
-Dango998 (簡体字中国語 翻訳データ)
-Firty (ブラジルポルトガル語 翻訳データ)
 
   </description>
 </ModMetaData>

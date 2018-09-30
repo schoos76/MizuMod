@@ -200,11 +200,11 @@
     <success>Always</success>
     <operations>
       <li Class="PatchOperationTest">
-        <xpath>*/ThingDef[defName = "PsychoidPekoe"]/comps</xpath>
+        <xpath>*/ThingDef[defName = "PsychiteTea"]/comps</xpath>
         <success>Invert</success>
       </li>
       <li Class="PatchOperationAdd">
-        <xpath>*/ThingDef[defName = "PsychoidPekoe"]</xpath>
+        <xpath>*/ThingDef[defName = "PsychiteTea"]</xpath>
         <value>
           <comps/>
         </value>
@@ -212,7 +212,7 @@
     </operations>
   </Operation>
   <Operation Class="PatchOperationAdd">
-    <xpath>*/ThingDef[defName = "PsychoidPekoe"]/comps</xpath>
+    <xpath>*/ThingDef[defName = "PsychiteTea"]/comps</xpath>
     <value>
       <li Class="MizuMod.CompProperties_WaterSource">
         <sourceType>Item</sourceType>

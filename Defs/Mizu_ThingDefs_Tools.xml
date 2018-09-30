@@ -66,13 +66,13 @@
         <categories>
           <li>Root</li>
         </categories>
-        <exceptedThingDefs>
+        <disallowedThingDefs>
           <li>Uranium</li>
           <li>Gold</li>
           <li>Silver</li>
           <li>Steel</li>
           <li>Plasteel</li>
-        </exceptedThingDefs>
+        </disallowedThingDefs>
       </defaultIngredientFilter>
       <recipeUsers>
         <li>ElectricSmithy</li>
@@ -128,11 +128,11 @@
         <categories>
           <li>Root</li>
         </categories>
-        <exceptedThingDefs>
+        <disallowedThingDefs>
           <li>DevilstrandCloth</li>
           <li>Hyperweave</li>
           <li>Synthread</li>
-        </exceptedThingDefs>
+        </disallowedThingDefs>
       </defaultIngredientFilter>
     </recipeMaker>
     <comps>
@@ -172,13 +172,13 @@
         <categories>
           <li>Root</li>
         </categories>
-        <exceptedThingDefs>
+        <disallowedThingDefs>
           <li>Uranium</li>
           <li>Gold</li>
           <li>Silver</li>
           <li>Steel</li>
           <li>Plasteel</li>
-        </exceptedThingDefs>
+        </disallowedThingDefs>
       </defaultIngredientFilter>
       <recipeUsers>
         <li>ElectricSmithy</li>
@@ -217,7 +217,6 @@
       <WorkToMake>2500</WorkToMake>
       <Mass>0.5</Mass>
       <RangedWeapon_Cooldown>2.66</RangedWeapon_Cooldown>
-      <Weapon_Bulk>0.2</Weapon_Bulk>
     </statBases>
     <stuffCategories>
       <li>Metallic</li>
@@ -229,13 +228,13 @@
         <categories>
           <li>Root</li>
         </categories>
-        <exceptedThingDefs>
+        <disallowedThingDefs>
           <li>Uranium</li>
           <li>Gold</li>
           <li>Silver</li>
           <li>Steel</li>
           <li>Plasteel</li>
-        </exceptedThingDefs>
+        </disallowedThingDefs>
       </defaultIngredientFilter>
       <recipeUsers>
         <li>ElectricSmithy</li>
@@ -268,7 +267,7 @@
         <verbClass>MizuMod.Verb_LaunchBucketWater</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <range>3.9</range>
-        <forcedMissRadius>0</forcedMissRadius>
+	<forcedMissRadius>1</forcedMissRadius>
         <warmupTime>0.5</warmupTime>
         <noiseRadius>2</noiseRadius>
         <ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>

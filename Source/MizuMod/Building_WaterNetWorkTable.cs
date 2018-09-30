@@ -188,11 +188,11 @@ namespace MizuMod
             this.WaterNetManager.AddThing(this);
         }
 
-        public override void DeSpawn()
+        public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
             this.WaterNetManager.RemoveThing(this);
 
-            base.DeSpawn();
+            base.DeSpawn(mode);
         }
 
         public List<IntVec3> ConnectVecs

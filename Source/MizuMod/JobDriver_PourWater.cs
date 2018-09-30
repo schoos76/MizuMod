@@ -12,7 +12,7 @@ namespace MizuMod
 {
     public class JobDriver_PourWater : JobDriver_DoBill
     {
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             if (!this.pawn.Reserve(this.job.GetTarget(BillGiverInd), this.job)) return false;
 

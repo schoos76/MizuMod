@@ -410,6 +410,7 @@
       <MaxHitPoints>50</MaxHitPoints>
       <Beauty>-1</Beauty>
       <Mass>0.5</Mass>
+      <Nutrition>0.03</Nutrition>
     </statBases>
     <category>Item</category>
     <useHitPoints>true</useHitPoints>
@@ -428,7 +429,6 @@
     <ingestible>
       <preferability>DesperateOnly</preferability>
       <foodType>Processed</foodType>
-      <nutrition>0.03</nutrition>
       <joy>0.10</joy>
       <joyKind>Gluttonous</joyKind>
       <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
@@ -537,7 +537,6 @@
       <AccuracyMedium>0.50</AccuracyMedium>
       <AccuracyLong>0.32</AccuracyLong>
       <RangedWeapon_Cooldown>1.38</RangedWeapon_Cooldown>
-      <Weapon_Bulk>0.5</Weapon_Bulk>
     </statBases>
     <comps>
       <li Class="MizuMod.CompProperties_LatentHeat">

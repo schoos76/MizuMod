@@ -122,7 +122,7 @@ namespace MizuMod
                                 " (",
                                 "ReservedBy".Translate(),
                                 ")"),
-                            p.NameStringShort));
+                            p.Name.ToStringShort));
 
                             break;
                         }

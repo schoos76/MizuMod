@@ -75,7 +75,7 @@ namespace MizuMod
 
         public void SetDirty()
         {
-            if (this.map == Find.VisibleMap)
+            if (this.map == Find.CurrentMap)
             {
                 this.drawer.SetDirty();
             }
@@ -83,7 +83,7 @@ namespace MizuMod
         }
         public void MarkForDraw()
         {
-            if (this.map == Find.VisibleMap)
+            if (this.map == Find.CurrentMap)
             {
                 this.drawer.MarkForDraw();
             }

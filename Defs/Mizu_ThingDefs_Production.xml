@@ -3,7 +3,7 @@
 
   <ThingDef Name="Mizu_BuildingBase" Abstract="True">
     <category>Building</category>
-    <soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
     <selectable>true</selectable>
     <drawerType>MapMeshAndRealTime</drawerType>
     <designationCategory>Mizu</designationCategory>
@@ -11,7 +11,7 @@
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <passability>PassThroughOnly</passability>
     <repairEffect>Repair</repairEffect>
-    <filthLeaving>BuildingRubble</filthLeaving>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
     <useHitPoints>True</useHitPoints>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
   </ThingDef>
@@ -56,7 +56,7 @@
       </li>
       <li Class="CompProperties_Forbiddable"/>
     </comps>
-    <terrainAffordanceNeeded>Undefined</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>ShallowWater</terrainAffordanceNeeded>
     <placeWorkers>
       <li>MizuMod.PlaceWorker_WaterWorker</li>
     </placeWorkers>
@@ -272,12 +272,12 @@
     </graphicData>
     <costList>
       <Steel>40</Steel>
-      <Component>1</Component>
+      <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <startElectricalFires>true</startElectricalFires>
+        <shortCircuitInRain>false</shortCircuitInRain>
         <basePowerConsumption>150</basePowerConsumption>
       </li>
       <li Class="CompProperties_Flickable"/>
@@ -349,7 +349,7 @@
     <label>Water pipe (in water)</label>
     <description>A building for connecting water network tools (pump, tank, faucet ...)</description>
     <uiIconPath>UI/Icons/Buildings/Mizu_WaterPipe_Icon</uiIconPath>
-    <terrainAffordanceNeeded>Undefined</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <stuffCategories>
       <li>Metallic</li>
       <li>Woody</li>
@@ -433,7 +433,7 @@
     <tickerType>Normal</tickerType>
     <costList>
       <Steel>50</Steel>
-      <Component>2</Component>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <statBases>
       <MaxHitPoints>140</MaxHitPoints>
@@ -443,7 +443,6 @@
     </statBases>
     <rotatable>true</rotatable>
     <neverMultiSelect>true</neverMultiSelect>
-    <terrainAffordanceNeeded>Undefined</terrainAffordanceNeeded>
     <comps>
       <li Class="MizuMod.CompProperties_WaterNetInput">
         <maxInputWaterFlow>150</maxInputWaterFlow>
@@ -480,7 +479,7 @@
     <tickerType>Normal</tickerType>
     <costList>
       <Steel>50</Steel>
-      <Component>2</Component>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <statBases>
       <MaxHitPoints>140</MaxHitPoints>
@@ -873,7 +872,7 @@
     </stuffCategories>
     <costStuffCount>50</costStuffCount>
     <costList>
-      <Component>2</Component>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <building>
       <ai_chillDestination>false</ai_chillDestination>
@@ -894,7 +893,6 @@
     <comps>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <startElectricalFires>true</startElectricalFires>
         <basePowerConsumption>150</basePowerConsumption>
         <shortCircuitInRain>false</shortCircuitInRain>
       </li>
@@ -917,6 +915,8 @@
   <ThingDef ParentName="Mizu_BuildingBase">
     <defName>Mizu_SprinklerExtinguishing</defName>
     <label>Sprinkler (extinguishing)</label>
+    <category>Building</category>
+    <minifiedDef>MinifiedThing</minifiedDef>
     <description>Automatically extinguish fire within range. Need electrical power.</description>
     <thingClass>MizuMod.Building_SprinklerExtinguishing</thingClass>
     <graphicData>
@@ -935,7 +935,7 @@
     </stuffCategories>
     <costStuffCount>50</costStuffCount>
     <costList>
-      <Component>2</Component>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <building>
       <ai_chillDestination>false</ai_chillDestination>
@@ -947,6 +947,7 @@
       <WorkToBuild>1500</WorkToBuild>
       <Flammability>1.0</Flammability>
       <Beauty>-8</Beauty>
+      <Mass>50</Mass>
     </statBases>
     <fillPercent>0.15</fillPercent>
     <rotatable>false</rotatable>
@@ -956,7 +957,6 @@
     <comps>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <startElectricalFires>true</startElectricalFires>
         <basePowerConsumption>150</basePowerConsumption>
         <shortCircuitInRain>false</shortCircuitInRain>
       </li>
@@ -969,7 +969,9 @@
     <placeWorkers>
       <li>MizuMod.PlaceWorker_WaterNet</li>
     </placeWorkers>
-    <minifiedDef>MinifiedFurniture</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
   </ThingDef>
 
 </Defs>

@@ -13,7 +13,7 @@ namespace MizuMod
     {
         private TargetIndex BuildingIndex = TargetIndex.A;
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return this.pawn.Reserve(this.job.GetTarget(BuildingIndex), this.job);
         }

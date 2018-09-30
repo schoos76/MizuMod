@@ -5,6 +5,7 @@ using System.Text;
 
 using RimWorld;
 using Verse;
+using UnityEngine;
 
 namespace MizuMod
 {
@@ -15,13 +16,13 @@ namespace MizuMod
         {
             get
             {
-                return Find.VisibleMap.GetComponent<MapComponent_HiddenWaterSpot>();
+                return Find.CurrentMap.GetComponent<MapComponent_HiddenWaterSpot>();
             }
         }
 
-        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot)
+        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol)
         {
-            base.DrawGhost(def, center, rot);
+            base.DrawGhost(def, center, rot, ghostCol);
 
             if (DebugSettings.godMode)
             {

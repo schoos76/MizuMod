@@ -14,7 +14,7 @@ namespace MizuMod
         protected override bool TryCastShot()
         {
             // 水チェック
-            var comp = this.ownerEquipment.GetComp<CompWaterTool>();
+            var comp = this.EquipmentSource.GetComp<CompWaterTool>();
             if (comp.StoredWaterVolumePercent < NeedWaterPercentage) return false;
 
             // 通常の投擲チェック
@@ -24,7 +24,7 @@ namespace MizuMod
             comp.StoredWaterVolume = 0f;
 
             // グラフィック更新
-            this.ownerEquipment.Tick();
+            this.EquipmentSource.Tick();
 
             return true;
         }

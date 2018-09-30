@@ -16,9 +16,9 @@ namespace MizuMod
             this.defaultLabel = MizuStrings.DesignatorAreaMopExpand.Translate();
             this.defaultDesc = MizuStrings.DesignatorAreaMopExpandDescription.Translate();
             this.icon = ContentFinder<Texture2D>.Get("UI/Designators/HomeAreaOn", true);
-            this.soundDragSustain = SoundDefOf.DesignateDragAreaAdd;
-            this.soundDragChanged = SoundDefOf.DesignateDragAreaAddChanged;
-            this.soundSucceeded = SoundDefOf.DesignateAreaAdd;
+            this.soundDragSustain = SoundDefOf.Designate_DragAreaAdd;
+            this.soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
+            this.soundSucceeded = SoundDefOf.Designate_AreaAdd;
         }
     }
 }

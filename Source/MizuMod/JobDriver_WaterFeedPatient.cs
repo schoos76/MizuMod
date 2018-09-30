@@ -42,7 +42,7 @@ namespace MizuMod
             this.getItemFromInventory = (this.pawn.inventory != null && this.pawn.inventory.Contains(this.TargetA.Thing));
         }
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             this.pawn.Reserve(WaterThing, this.job);
             this.pawn.Reserve(Patient, this.job);

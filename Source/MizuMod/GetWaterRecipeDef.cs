@@ -20,11 +20,11 @@ namespace MizuMod
 
             if (this.products == null)
             {
-                var thingCountClass = new ThingCountClass();
+                var thingCountClass = new ThingDefCountClass();
                 DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(thingCountClass, "thingDef", "Mizu_NormalWater");
                 thingCountClass.count = 1;
 
-                this.products = new List<ThingCountClass>()
+                this.products = new List<ThingDefCountClass>()
                 {
                     thingCountClass,
                 };

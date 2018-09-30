@@ -64,28 +64,28 @@
   </Operation>
 
   <!-- 水地形のTerrainAffordanceにUndefinedを追加 -->
-  <Operation Class="PatchOperationAdd">
+  <!-- <Operation Class="PatchOperationAdd">
     <xpath>*/TerrainDef[contains(defName, "Water")]/affordances</xpath>
     <value>
       <li>Undefined</li>
     </value>
-  </Operation>
+  </Operation> -->
   <Operation Class="PatchOperationAdd">
     <xpath>*/TerrainDef[contains(defName, "Marsh")]/affordances</xpath>
     <value>
-      <li>Undefined</li>
+      <li>Light</li>
     </value>
   </Operation>
   <Operation Class="PatchOperationAdd">
     <xpath>*/TerrainDef[defName = "Marsh"]/affordances</xpath>
     <value>
-      <li>Undefined</li>
+      <li>Light</li>
     </value>
   </Operation>
   <Operation Class="PatchOperationAdd">
     <xpath>*/TerrainDef[defName = "Mud"]/affordances</xpath>
     <value>
-      <li>Undefined</li>
+      <li>Light</li>
     </value>
   </Operation>
 

@@ -183,14 +183,14 @@ namespace MizuMod
             }
         }
 
-        private List<ThingAmount> chosenIngThings = new List<ThingAmount>();
+        private List<ThingCount> chosenIngThings = new List<ThingCount>();
         private static List<Thing> newRelevantThings = new List<Thing>();
         private static List<IngredientCount> ingredientsOrdered = new List<IngredientCount>();
         private static List<Thing> relevantThings = new List<Thing>();
         private static HashSet<Thing> processedThings = new HashSet<Thing>();
         private static DefCountList availableCounts = new DefCountList();
 
-        private static bool TryFindBestBillIngredients(Bill bill, Pawn pawn, Thing billGiver, List<ThingAmount> chosen)
+        private static bool TryFindBestBillIngredients(Bill bill, Pawn pawn, Thing billGiver, List<ThingCount> chosen)
         {
             // 最終結果クリア
             chosen.Clear();
@@ -367,12 +367,12 @@ namespace MizuMod
             }
         }
 
-        private static bool TryFindBestBillIngredientsInSet(List<Thing> availableThings, Bill bill, List<ThingAmount> chosen)
+        private static bool TryFindBestBillIngredientsInSet(List<Thing> availableThings, Bill bill, List<ThingCount> chosen)
         {
             return TryFindBestBillIngredientsInSet_NoMix(availableThings, bill, chosen);
         }
 
-        private static bool TryFindBestBillIngredientsInSet_NoMix(List<Thing> availableThings, Bill bill, List<ThingAmount> chosen)
+        private static bool TryFindBestBillIngredientsInSet_NoMix(List<Thing> availableThings, Bill bill, List<ThingCount> chosen)
         {
             RecipeDef recipe = bill.recipe;
             chosen.Clear();
@@ -413,7 +413,7 @@ namespace MizuMod
                         if (availableThing.def != curDef) continue;
 
                         // 未使用の材料数(全個数から、既に追加されている個数を引いた数)
-                        int unusedCount = availableThing.stackCount - ThingAmount.CountUsed(chosen, availableThing);
+                        int unusedCount = availableThing.stackCount - ThingCountUtility.CountOf(chosen, availableThing);
 
                         // 未使用数0以下
                         if (unusedCount <= 0) continue;
@@ -422,7 +422,7 @@ namespace MizuMod
                         int actualUseCount = Mathf.Min(Mathf.FloorToInt(remainRequiredCount), unusedCount);
 
                         // リストに加える
-                        ThingAmount.AddToList(chosen, availableThing, actualUseCount);
+                        ThingCountUtility.AddToList(chosen, availableThing, actualUseCount);
 
                         // 残りの必要個数を減らす
                         remainRequiredCount -= (float)actualUseCount;
@@ -464,8 +464,8 @@ namespace MizuMod
             job2.countQueue = new List<int>(this.chosenIngThings.Count);
             for (int i = 0; i < this.chosenIngThings.Count; i++)
             {
-                job2.targetQueueB.Add(this.chosenIngThings[i].thing);
-                job2.countQueue.Add(this.chosenIngThings[i].count);
+                job2.targetQueueB.Add(this.chosenIngThings[i].Thing);
+                job2.countQueue.Add(this.chosenIngThings[i].Count);
             }
             job2.targetC = GetBillGiverRootCell(giver as Thing, pawn);
             job2.haulMode = HaulMode.ToCellNonStorage;
@@ -473,7 +473,7 @@ namespace MizuMod
             return job2;
         }
 
-        protected bool IsFoundWater(IBillGiver giver, DefExtension_WaterRecipe ext, List<ThingAmount> chosen)
+        protected bool IsFoundWater(IBillGiver giver, DefExtension_WaterRecipe ext, List<ThingCount> chosen)
         {
             if (ext == null) return true;
 
@@ -555,7 +555,7 @@ namespace MizuMod
             }
         }
 
-        protected bool IsNotFullWater(IBillGiver giver, DefExtension_WaterRecipe ext, List<ThingAmount> chosen)
+        protected bool IsNotFullWater(IBillGiver giver, DefExtension_WaterRecipe ext, List<ThingCount> chosen)
         {
             if (ext == null) return true;
 
@@ -580,10 +580,10 @@ namespace MizuMod
                         var totalWaterVolume = 0f;
                         foreach (var ta in chosen)
                         {
-                            var sourceComp = ta.thing.TryGetComp<CompWaterSource>();
+                            var sourceComp = ta.Thing.TryGetComp<CompWaterSource>();
                             if (sourceComp != null)
                             {
-                                totalWaterVolume += sourceComp.WaterVolume * ta.count;
+                                totalWaterVolume += sourceComp.WaterVolume * ta.Count;
                             }
                         }
                         if (GetTotalAmountCanAccept(building) < totalWaterVolume) return false;

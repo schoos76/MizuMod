@@ -3,7 +3,6 @@
 
   <GenStepDef>
     <defName>UndergroundShallowWater</defName>
-    <linkWithMapGenerator>BasicMap</linkWithMapGenerator>
     <order>2000</order>
     <genStep Class="MizuMod.GenStep_UndergroundShallowWater">
       <basePoolNum>20</basePoolNum>
@@ -25,7 +24,6 @@
 
   <GenStepDef>
     <defName>UndergroundDeepWater</defName>
-    <linkWithMapGenerator>BasicMap</linkWithMapGenerator>
     <order>2001</order>
     <genStep Class="MizuMod.GenStep_UndergroundDeepWater">
       <basePoolNum>40</basePoolNum>
@@ -47,7 +45,6 @@
 
   <GenStepDef>
     <defName>HiddenWaterSpot</defName>
-    <linkWithMapGenerator>BasicMap</linkWithMapGenerator>
     <order>2002</order>
     <genStep Class="MizuMod.GenStep_HiddenWaterSpot">
       <blockSizeX>30</blockSizeX>

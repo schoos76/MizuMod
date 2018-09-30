@@ -25,7 +25,7 @@ namespace MizuMod
             }
         }
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return this.pawn.Reserve(this.job.targetA, this.job);
         }
@@ -54,7 +54,7 @@ namespace MizuMod
             };
             getToil.defaultCompleteMode = ToilCompleteMode.Never;
             getToil.WithEffect(EffecterDefOf.ClearSnow, GetSnowCellIndex);
-            getToil.PlaySustainerOrSound(() => SoundDefOf.Interact_ClearSnow);
+            getToil.PlaySustainerOrSound(() => SoundDefOf.Interact_CleanFilth);
             getToil.WithProgressBar(GetSnowCellIndex, () => this.workDone / this.TotalNeededWork, true, -0.5f);
             getToil.FailOnCannotTouch(GetSnowCellIndex, PathEndMode.Touch);
             yield return getToil;

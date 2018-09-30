@@ -31,8 +31,8 @@ namespace MizuMod
         public Designator_AreaMop(DesignateMode mode)
         {
             this.mode = mode;
-            this.soundDragSustain = SoundDefOf.DesignateDragStandard;
-            this.soundDragChanged = SoundDefOf.DesignateDragStandardChanged;
+            this.soundDragSustain = SoundDefOf.Designate_DragStandard;
+            this.soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
             this.useMouseIcon = true;
             //this.hotKey = KeyBindingDefOf.Misc7;
             //this.tutorTag = "AreaSnowClear";

@@ -16,10 +16,10 @@ namespace MizuMod
             this.defaultLabel = MizuStrings.DesignatorDeconstructPipe.Translate();
             this.defaultDesc = MizuStrings.DesignatorDeconstructPipeDescription.Translate();
             this.icon = ContentFinder<Texture2D>.Get("UI/Designators/Deconstruct", true);
-            this.soundDragSustain = SoundDefOf.DesignateDragStandard;
-            this.soundDragChanged = SoundDefOf.DesignateDragStandardChanged;
+            this.soundDragSustain = SoundDefOf.Designate_DragStandard;
+            this.soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
             this.useMouseIcon = true;
-            this.soundSucceeded = SoundDefOf.DesignateDeconstruct;
+            this.soundSucceeded = SoundDefOf.Designate_Deconstruct;
             //this.hotKey = KeyBindingDefOf.DesignatorDeconstruct;
         }
 

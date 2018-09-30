@@ -73,7 +73,7 @@ namespace MizuMod
             return potentialCells;
         }
 
-        public override bool HasJobOnCell(Pawn pawn, IntVec3 c)
+        public override bool HasJobOnCell(Pawn pawn, IntVec3 c, bool forced = false)
         {
             // プレイヤー派閥でないなら何もしない
             if (pawn.Faction != Faction.OfPlayer) return false;
@@ -151,7 +151,7 @@ namespace MizuMod
             return true;
         }
 
-        public override Job JobOnCell(Pawn pawn, IntVec3 cell)
+        public override Job JobOnCell(Pawn pawn, IntVec3 cell, bool forced = false)
         {
             // ジョブ作成
             Job job = new Job(MizuDef.Job_WaterFarm);

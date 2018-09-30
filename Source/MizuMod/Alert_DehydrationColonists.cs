@@ -32,7 +32,7 @@ namespace MizuMod
             StringBuilder stringBuilder = new StringBuilder();
             foreach (Pawn current in this.DehydratingColonists)
             {
-                stringBuilder.AppendLine("    " + current.NameStringShort);
+                stringBuilder.AppendLine("    " + current.Name.ToStringShort);
             }
             return string.Format(MizuStrings.AlertDehydrationDesc.Translate(), stringBuilder.ToString());
         }

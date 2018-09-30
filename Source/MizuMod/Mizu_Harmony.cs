@@ -24,99 +24,99 @@ namespace MizuMod
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
     }
-
-    // キャラバン移動中に水分要求を補充する行動を追加
-    [HarmonyPatch(typeof(CaravanPawnsNeedsUtility))]
-    [HarmonyPatch("TrySatisfyPawnNeeds")]
-    [HarmonyPatch(new Type[] { typeof(Pawn), typeof(Caravan) })]
-    class CaravanPawnsNeedsUtility_TrySatisfyPawnNeeds_Patch
-    {
-        static void Postfix(Pawn pawn, Caravan caravan)
-        {
-            // キャラバンのポーンの水分要求の処理
-            if (pawn.needs == null) return;
-
-            Need_Water need_water = pawn.needs.water();
-            if (need_water == null) return;
-
-            // 喉が渇いてない場合は飲まない
-            if (need_water.CurCategory <= ThirstCategory.Healthy) return;
-
-            // タイルが0以上(?)、死んでない、ローカルではなく惑星マップ上にいる(キャラバンしてる)、そのポーンが地形から水を飲める(心情がある/ない、脱水症状まで進んでいる/いない、など)
-            if (pawn.Tile >= 0 && !pawn.Dead && pawn.IsWorldPawn() && pawn.CanDrinkFromTerrain())
-            {
-                WaterTerrainType drankTerrainType = caravan.GetWaterTerrainType();
-
-                // 水を飲めない場所
-                if (drankTerrainType == WaterTerrainType.NoWater) return;
-
-                // 地形から水を飲む
-                need_water.CurLevel = 1.0f;
-
-                if (drankTerrainType == WaterTerrainType.SeaWater)
-                {
-                    // 海水の場合の健康状態悪化
-                    pawn.health.AddHediff(HediffMaker.MakeHediff(MizuDef.Hediff_DrankSeaWater, pawn));
-                }
-
-                // 心情要求がなければここで終了
-                if (pawn.needs.mood == null) return;
-
-                // 直接水を飲んだ心情付加
-                if (pawn.CanManipulate())
-                {
-                    pawn.needs.mood.thoughts.memories.TryGainMemory(MizuDef.Thought_DrankScoopedWater);
-                }
-                else
-                {
-                    pawn.needs.mood.thoughts.memories.TryGainMemory(MizuDef.Thought_SippedWaterLikeBeast);
-                }
-
-                // キャラバンのいる地形に応じた心情を付加
-                ThoughtDef thoughtDef = MizuUtility.GetThoughtDefFromTerrainType(drankTerrainType);
-                if (thoughtDef != null)
-                {
-                    // 水の種類による心情
-                    pawn.needs.mood.thoughts.memories.TryGainMemory(thoughtDef);
-                }
-
-                return;
-            }
-
-            // 水アイテムを探す
-            Thing waterThing;
-            Pawn inventoryPawn;
-
-            // アイテムが見つからない
-            if (!MizuCaravanUtility.TryGetBestWater(caravan, pawn, out waterThing, out inventoryPawn)) return;
-
-            // アイテムに応じた水分を摂取＆心情変化＆健康変化
-            float numWater = MizuUtility.GetWater(pawn, waterThing, need_water.WaterWanted, false);
-            need_water.CurLevel += numWater;
-            pawn.records.AddTo(MizuDef.Record_WaterDrank, numWater);
-
-            // 水アイテムが消滅していない場合(スタックの一部だけ消費した場合等)はここで終了
-            if (!waterThing.Destroyed) return;
-
-            if (inventoryPawn != null)
-            {
-                // 誰かの所持品にあった水スタックを飲みきったのであれば、所持品欄から除去
-                inventoryPawn.inventory.innerContainer.Remove(waterThing);
-
-                // 移動不可状態を一旦リセット(して再計算させる？)
-                caravan.RecacheImmobilizedNow();
-
-                // 水の残量再計算フラグON
-                MizuCaravanUtility.daysWorthOfWaterDirty = true;
-            }
-
-            if (!MizuCaravanUtility.TryGetBestWater(caravan, pawn, out waterThing, out inventoryPawn))
-            {
-                // 飲んだことにより水がなくなったら警告を出す
-                Messages.Message(string.Format(MizuStrings.MessageCaravanRunOutOfWater.Translate(), caravan.LabelCap, pawn.Label), caravan, MessageTypeDefOf.ThreatBig);
-            }
-        }
-    }
+//    Uncommented for now, as I have no clue how to merge that code in the B19 version of CaravanPansNeedsUtility
+//    // キャラバン移動中に水分要求を補充する行動を追加
+//    [HarmonyPatch(typeof(CaravanPawnsNeedsUtility))]
+//    [HarmonyPatch("TrySatisfyPawnNeeds")]
+//    [HarmonyPatch(new Type[] { typeof(Pawn), typeof(Caravan) })]
+//    class CaravanPawnsNeedsUtility_TrySatisfyPawnNeeds_Patch
+//    {
+//        static void Postfix(Pawn pawn, Caravan caravan)
+//        {
+//            // キャラバンのポーンの水分要求の処理
+//            if (pawn.needs == null) return;
+//
+//            Need_Water need_water = pawn.needs.water();
+//            if (need_water == null) return;
+//
+//            // 喉が渇いてない場合は飲まない
+//            if (need_water.CurCategory <= ThirstCategory.Healthy) return;
+//
+//            // タイルが0以上(?)、死んでない、ローカルではなく惑星マップ上にいる(キャラバンしてる)、そのポーンが地形から水を飲める(心情がある/ない、脱水症状まで進んでいる/いない、など)
+//            if (pawn.Tile >= 0 && !pawn.Dead && pawn.IsWorldPawn() && pawn.CanDrinkFromTerrain())
+//            {
+//                WaterTerrainType drankTerrainType = caravan.GetWaterTerrainType();
+//
+//                // 水を飲めない場所
+//                if (drankTerrainType == WaterTerrainType.NoWater) return;
+//
+//                // 地形から水を飲む
+//                need_water.CurLevel = 1.0f;
+//
+//                if (drankTerrainType == WaterTerrainType.SeaWater)
+//                {
+//                    // 海水の場合の健康状態悪化
+//                    pawn.health.AddHediff(HediffMaker.MakeHediff(MizuDef.Hediff_DrankSeaWater, pawn));
+//                }
+//
+//                // 心情要求がなければここで終了
+//                if (pawn.needs.mood == null) return;
+//
+//                // 直接水を飲んだ心情付加
+//                if (pawn.CanManipulate())
+//                {
+//                    pawn.needs.mood.thoughts.memories.TryGainMemory(MizuDef.Thought_DrankScoopedWater);
+//                }
+//                else
+//                {
+//                    pawn.needs.mood.thoughts.memories.TryGainMemory(MizuDef.Thought_SippedWaterLikeBeast);
+//                }
+//
+//                // キャラバンのいる地形に応じた心情を付加
+//                ThoughtDef thoughtDef = MizuUtility.GetThoughtDefFromTerrainType(drankTerrainType);
+//                if (thoughtDef != null)
+//                {
+//                    // 水の種類による心情
+//                    pawn.needs.mood.thoughts.memories.TryGainMemory(thoughtDef);
+//                }
+//
+//                return;
+//            }
+//
+//            // 水アイテムを探す
+//            Thing waterThing;
+//            Pawn inventoryPawn;
+//
+//            // アイテムが見つからない
+//            if (!MizuCaravanUtility.TryGetBestWater(caravan, pawn, out waterThing, out inventoryPawn)) return;
+//
+//            // アイテムに応じた水分を摂取＆心情変化＆健康変化
+//            float numWater = MizuUtility.GetWater(pawn, waterThing, need_water.WaterWanted, false);
+//            need_water.CurLevel += numWater;
+//            pawn.records.AddTo(MizuDef.Record_WaterDrank, numWater);
+//
+//            // 水アイテムが消滅していない場合(スタックの一部だけ消費した場合等)はここで終了
+//            if (!waterThing.Destroyed) return;
+//
+//            if (inventoryPawn != null)
+//            {
+//                // 誰かの所持品にあった水スタックを飲みきったのであれば、所持品欄から除去
+//                inventoryPawn.inventory.innerContainer.Remove(waterThing);
+//
+//                // 移動不可状態を一旦リセット(して再計算させる？)
+//                caravan.RecacheImmobilizedNow();
+//
+//                // 水の残量再計算フラグON
+//                MizuCaravanUtility.daysWorthOfWaterDirty = true;
+//            }
+//
+//            if (!MizuCaravanUtility.TryGetBestWater(caravan, pawn, out waterThing, out inventoryPawn))
+//            {
+//                // 飲んだことにより水がなくなったら警告を出す
+//                Messages.Message(string.Format(MizuStrings.MessageCaravanRunOutOfWater.Translate(), caravan.LabelCap, pawn.Label), caravan, MessageTypeDefOf.ThreatBig);
+//            }
+//        }
+//    }
 
     // 所持品欄の水アイテムに「水を飲む」ボタンを追加
     [HarmonyPatch(typeof(ITab_Pawn_Gear))]
@@ -163,7 +163,7 @@ namespace MizuMod
             TooltipHandler.TipRegion(dbRect, string.Format(MizuStrings.FloatMenuGetWater.Translate(), thing.LabelNoCount));
             if (Widgets.ButtonImage(dbRect, MizuGraphics.Texture_ButtonIngest))
             {
-                SoundDefOf.TickHigh.PlayOneShotOnCamera(null);
+                SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
                 Job job = new Job(MizuDef.Job_DrinkWater, thing)
                 {
                     count = MizuUtility.WillGetStackCountOf(selPawn, thing)
@@ -421,21 +421,22 @@ namespace MizuMod
         }
     }
 
-    // 水アイテムが囚人部屋に置いてあるとき、囚人用として扱う処理を追加
-    [HarmonyPatch(typeof(HaulAIUtility))]
-    [HarmonyPatch("PawnCanAutomaticallyHaulBasicChecks")]
-    class HaulAIUtility_PawnCanAutomaticallyHaulBasicChecks
-    {
-        static void Postfix(ref bool __result, Pawn p, Thing t, bool forced)
-        {
-            if (t.CanGetWater() && !t.IsSociallyProper(p, false, true))
-            {
-                JobFailReason.Is("ReservedForPrisoners".Translate());
-                __result = false;
-                return;
-            }
-        }
-    }
+//    Uncommented for now, as I have no clue how to merge that code in the B19 version of HaulAIUtility
+//    // 水アイテムが囚人部屋に置いてあるとき、囚人用として扱う処理を追加
+//    [HarmonyPatch(typeof(HaulAIUtility))]
+//    [HarmonyPatch("PawnCanAutomaticallyHaulBasicChecks")]
+//    class HaulAIUtility_PawnCanAutomaticallyHaulBasicChecks
+//    {
+//        static void Postfix(ref bool __result, Pawn p, Thing t, bool forced)
+//        {
+//            if (t.CanGetWater() && !t.IsSociallyProper(p, false, true))
+//            {
+//                JobFailReason.Is("ReservedForPrisoners".Translate());
+//                __result = false;
+//                return;
+//            }
+//        }
+//    }
 
     // 食べ物に水分設定がある場合、食べた後に水分も回復する処理を追加
     [HarmonyPatch(typeof(Thing))]

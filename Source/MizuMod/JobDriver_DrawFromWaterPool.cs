@@ -37,9 +37,9 @@ namespace MizuMod
             }
         }
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            if (!base.TryMakePreToilReservations()) return false;
+            if (!base.TryMakePreToilReservations(errorOnFailed)) return false;
 
             if (this.WaterGrid == null) return false;
 

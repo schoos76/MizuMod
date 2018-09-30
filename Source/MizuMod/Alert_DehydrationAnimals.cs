@@ -33,7 +33,7 @@ namespace MizuMod
                                      orderby a.def.label
                                      select a)
             {
-                stringBuilder.Append("    " + current.NameStringShort);
+                stringBuilder.Append("    " + current.Name.ToStringShort);
                 if (current.Name.IsValid && !current.Name.Numerical)
                 {
                     stringBuilder.Append(" (" + current.def.label + ")");

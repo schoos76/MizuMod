@@ -33,7 +33,7 @@ namespace MizuMod
             return pawn.Map.areaManager.Mop().ActiveCells;
         }
 
-        public override bool HasJobOnCell(Pawn pawn, IntVec3 c)
+        public override bool HasJobOnCell(Pawn pawn, IntVec3 c, bool forced = false)
         {
             // プレイヤー派閥でないなら絶対モップ掛けしない
             if (pawn.Faction != Faction.OfPlayer) return false;
@@ -80,7 +80,7 @@ namespace MizuMod
             return true;
         }
 
-        public override Job JobOnCell(Pawn pawn, IntVec3 cell)
+        public override Job JobOnCell(Pawn pawn, IntVec3 cell, bool forced = false)
         {
             // モップジョブ作成
             Job job = new Job(MizuDef.Job_Mop);

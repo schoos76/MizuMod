@@ -31,7 +31,7 @@ namespace MizuMod
                     }
                     else
                     {
-                        tmpThingCounts.Add(new ThingCount(transferableOneWay.ThingDef, transferableOneWay.CountToTransfer));
+                        tmpThingCounts.Add(new ThingCount(transferableOneWay.AnyThing, transferableOneWay.CountToTransfer));
                     }
                 }
             }
@@ -71,9 +71,9 @@ namespace MizuMod
                 for (int i = 0; i < extraWater.Count; i++)
                 {
                     bool canGetWater = false;
-                    for (int j = 0; j < extraWater[i].ThingDef.comps.Count; j++)
+                    for (int j = 0; j < extraWater[i].Thing.def.comps.Count; j++)
                     {
-                        var compprop = extraWater[i].ThingDef.comps[j] as CompProperties_WaterSource;
+                        var compprop = extraWater[i].Thing.def.comps[j] as CompProperties_WaterSource;
                         if (compprop != null && compprop.sourceType == CompProperties_WaterSource.SourceType.Item && compprop.waterAmount > 0.0f)
                         {
                             canGetWater = true;
@@ -95,7 +95,7 @@ namespace MizuMod
                     {
                         if (innerContainer[k].CanGetWater())
                         {
-                            tmpWater.Add(new ThingCount(innerContainer[k].def, innerContainer[k].stackCount));
+                            tmpWater.Add(new ThingCount(innerContainer[k], innerContainer[k].stackCount));
                         }
                     }
                 }
@@ -132,9 +132,9 @@ namespace MizuMod
                                 break;
                             }
                             CompProperties_WaterSource compprop = null;
-                            for (int x = 0; x < tmpWater[num2].ThingDef.comps.Count; x++)
+                            for (int x = 0; x < tmpWater[num2].Thing.def.comps.Count; x++)
                             {
-                                compprop = tmpWater[num2].ThingDef.comps[x] as CompProperties_WaterSource;
+                                compprop = tmpWater[num2].Thing.def.comps[x] as CompProperties_WaterSource;
                                 if (compprop != null && compprop.sourceType == CompProperties_WaterSource.SourceType.Item)
                                 {
                                     break;
@@ -173,7 +173,7 @@ namespace MizuMod
 
         private static List<Pawn> tmpPawns = new List<Pawn>();
         private static List<ThingCount> tmpThingCounts = new List<ThingCount>();
-        private static List<ThingStackPart> tmpThingStackParts = new List<ThingStackPart>();
+        private static List<ThingCount> tmpThingStackParts = new List<ThingCount>();
 
         public static float ApproxDaysWorthOfWaterLeftAfterTradeableTransfer(List<Thing> allCurrentThings, List<Tradeable> tradeables, IgnorePawnsInventoryMode ignoreInventory)
         {
@@ -189,7 +189,7 @@ namespace MizuMod
                 }
                 else
                 {
-                    tmpThingCounts.Add(new ThingCount(tmpThingStackParts[i].Thing.def, tmpThingStackParts[i].Count));
+                    tmpThingCounts.Add(new ThingCount(tmpThingStackParts[i].Thing, tmpThingStackParts[i].Count));
                 }
             }
             tmpThingStackParts.Clear();
@@ -207,7 +207,7 @@ namespace MizuMod
             {
                 if (water[i].Count > 0)
                 {
-                    ThingDef thingDef = water[i].ThingDef;
+                    ThingDef thingDef = water[i].Thing.def;
                     if (MizuCaravanUtility.CanEverGetWater(thingDef, pawn))
                     {
                         float waterScore = MizuCaravanUtility.GetWaterScore(thingDef, pawn);

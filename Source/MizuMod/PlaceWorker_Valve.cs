@@ -10,7 +10,7 @@ namespace MizuMod
 {
     public class PlaceWorker_Valve : PlaceWorker
     {
-        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot)
+        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol)
         {
             IntVec3 intVecSouth = center + IntVec3.South.RotatedBy(rot);
             IntVec3 intVecNorth = center + IntVec3.North.RotatedBy(rot);

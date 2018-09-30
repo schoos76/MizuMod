@@ -176,9 +176,9 @@ namespace MizuMod
                 var actor = toil.actor;
                 if (actor.CurJob.placedThings == null)
                 {
-                    actor.CurJob.placedThings = new List<ThingStackPartClass>();
+                    actor.CurJob.placedThings = new List<ThingCountClass>();
                 }
-                actor.CurJob.placedThings.Add(new ThingStackPartClass(actor.carryTracker.CarriedThing, actor.carryTracker.CarriedThing.stackCount));
+                actor.CurJob.placedThings.Add(new ThingCountClass(actor.carryTracker.CarriedThing, actor.carryTracker.CarriedThing.stackCount));
             };
             toil.defaultCompleteMode = ToilCompleteMode.Instant;
             return toil;
@@ -733,7 +733,7 @@ namespace MizuMod
                 // 確率で食中毒
                 if (Rand.Value < waterTypeDef.foodPoisonChance)
                 {
-                    FoodUtility.AddFoodPoisoningHediff(actor, thing);
+                    FoodUtility.AddFoodPoisoningHediff(actor, thing, FoodPoisonCause.Unknown);
                 }
             };
             toil.tickAction = delegate

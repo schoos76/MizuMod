@@ -16,9 +16,9 @@ namespace MizuMod
             this.defaultLabel = MizuStrings.DesignatorAreaSnowGetClear.Translate();
             this.defaultDesc = MizuStrings.DesignatorAreaSnowGetClearDescription.Translate();
             this.icon = ContentFinder<Texture2D>.Get("UI/Designators/SnowClearAreaOff", true);
-            this.soundDragSustain = SoundDefOf.DesignateDragAreaDelete;
-            this.soundDragChanged = SoundDefOf.DesignateDragAreaDeleteChanged;
-            this.soundSucceeded = SoundDefOf.DesignateAreaDelete;
+            this.soundDragSustain = SoundDefOf.Designate_DragAreaDelete;
+            this.soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
+            this.soundSucceeded = SoundDefOf.Designate_AreaDelete;
         }
     }
 }

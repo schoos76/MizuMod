@@ -32,7 +32,7 @@ namespace MizuMod
             }
         }
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             this.pawn.ReserveAsManyAsPossible(this.job.GetTargetQueue(WateringInd), this.job);
             this.pawn.Reserve(this.Tool, this.job);
