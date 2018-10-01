@@ -349,7 +349,7 @@
     <label>Water pipe (in water)</label>
     <description>A building for connecting water network tools (pump, tank, faucet ...)</description>
     <uiIconPath>UI/Icons/Buildings/Mizu_WaterPipe_Icon</uiIconPath>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>ShallowWater</terrainAffordanceNeeded>
     <stuffCategories>
       <li>Metallic</li>
       <li>Woody</li>
@@ -468,6 +468,7 @@
       <li>Mizu_Waterworks</li>
     </researchPrerequisites>
     <designationHotKey>Misc8</designationHotKey>
+    <terrainAffordanceNeeded>ShallowWater</terrainAffordanceNeeded>
   </ThingDef>
   
   <ThingDef Name="Mizu_UndergroundWaterPumpBase" ParentName="Mizu_BuildingBase" Abstract="True">
