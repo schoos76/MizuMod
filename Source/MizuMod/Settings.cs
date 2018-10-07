@@ -38,6 +38,14 @@ namespace MizuMod
                 return this.fertilityFactorInWatering;
             }
         }
+        
+        	public Settings() {
+        		fertilityFactorInNotWatering=DefaultFertilityFactorInNotWatering;
+        		fertilityFactorInWatering=DefaultFertilityFactorInWatering;
+        		
+		}
+
+        
         private string fertilityFactorInWateringBuffer;
 
         public void DoSettingsWindowContents(Rect inRect)
@@ -78,7 +86,7 @@ namespace MizuMod
                 " - ",
                 MaxFertilityFactorInWatering.ToString("F2"),
                 ")"
-            }));
+            }));	
             listing_standard.TextFieldNumeric(
                 ref this.fertilityFactorInWatering,
                 ref this.fertilityFactorInWateringBuffer,
