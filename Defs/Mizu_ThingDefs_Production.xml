@@ -122,7 +122,6 @@
     </graphicData>
     <stuffCategories>
       <li>Metallic</li>
-      <li>Woody</li>
       <li>Stony</li>
     </stuffCategories>
     <costStuffCount>100</costStuffCount>
@@ -352,7 +351,6 @@
     <terrainAffordanceNeeded>ShallowWater</terrainAffordanceNeeded>
     <stuffCategories>
       <li>Metallic</li>
-      <li>Woody</li>
       <li>Stony</li>
     </stuffCategories>
     <costStuffCount>1</costStuffCount>
@@ -408,7 +406,6 @@
     <description>A building for connect water network. You can switch state (open/close).</description>
     <stuffCategories>
       <li>Metallic</li>
-      <li>Woody</li>
       <li>Stony</li>
     </stuffCategories>
     <costStuffCount>5</costStuffCount>
@@ -682,6 +679,7 @@
     <placeWorkers>
       <li>MizuMod.PlaceWorker_WaterNet</li>
     </placeWorkers>
+    <placingDraggableDimensions>2</placingDraggableDimensions>
   </ThingDef>
   
   <ThingDef ParentName="Mizu_BuildingBase">
@@ -705,7 +703,6 @@
     <tickerType>Normal</tickerType>
     <stuffCategories>
       <li>Metallic</li>
-      <li>Woody</li>
       <li>Stony</li>
     </stuffCategories>
     <costStuffCount>2</costStuffCount>
