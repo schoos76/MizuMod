@@ -4,6 +4,7 @@
   <MizuWaterAmount>水分</MizuWaterAmount>
   <MizuConsumeWater>{0}を飲む</MizuConsumeWater>
   <MizuNoWater>水が無い</MizuNoWater>
+  <MizuWaterUILabel>水</MizuWaterUILabel>
   
   <MizuLowWater>水が少ない</MizuLowWater>
   <MizuLowWaterDesc>水の備蓄が危険水域まで低下しています。\n\n備蓄量:{0}\n入植者+囚人必要量:{1}\n日数 {2}\n\n汲むか、買うか、見つけるかして飲用水を得てください。</MizuLowWaterDesc>

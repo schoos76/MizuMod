@@ -15,6 +15,7 @@ namespace MizuMod
         public static readonly string CompWaterAmount = "MizuWaterAmount";
         public static readonly string FloatMenuGetWater = "MizuConsumeWater";
         public static readonly string JobFailReasonNoWater = "MizuNoWater";
+        public static readonly string WaterUILabel = "MizuWaterUILabel";
 
         // コロニー警告(右下あたりのアレ)
         public static readonly string AlertLowWater = "MizuLowWater";
