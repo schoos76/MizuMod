@@ -90,6 +90,11 @@ namespace MizuMod
 
         public static bool daysWorthOfWaterDirty = true;
         private static float cachedDaysWorthOfWater;
+        
+        public  static float DaysWorthOfWater() {
+        	return cachedDaysWorthOfWater;
+        }
+        
         public static float DaysWorthOfWater_FormCaravan(Dialog_FormCaravan dialog)
         {
             if (MizuCaravanUtility.daysWorthOfWaterDirty)
@@ -116,6 +121,10 @@ namespace MizuMod
                 MizuCaravanUtility.cachedDaysWorthOfWater = DaysWorthOfWaterCalculator.ApproxDaysWorthOfWaterLeftAfterTradeableTransfer(playerCaravanAllPawnsAndItems, tradeables, IgnorePawnsInventoryMode.Ignore);
             }
             return MizuCaravanUtility.cachedDaysWorthOfWater;
+        }
+        
+        public static void DrawDaysWorthOfWater(List<TransferableUIUtility.ExtraInfo> info) {
+        	info.Add(new TransferableUIUtility.ExtraInfo(MizuStrings.WaterUILabel.Translate(), cachedDaysWorthOfWater.ToString("0.#"), Color.white, MizuStrings.LabelDaysWorthOfWaterTooltip.Translate(), -9999f));
         }
 
         public static void DrawDaysWorthOfWaterInfo(Rect rect, float daysWorthOfWater, bool alignRight = false, float truncToWidth = float.MaxValue)

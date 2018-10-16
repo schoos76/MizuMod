@@ -4,6 +4,7 @@
   <MizuWaterAmount>Quantia de Água</MizuWaterAmount>
   <MizuConsumeWater>beber {0}</MizuConsumeWater>
   <MizuNoWater>sem água</MizuNoWater>
+  <MizuWaterUILabel>água</MizuWaterUILabel>
   
   <MizuLowWater>Pouca água</MizuLowWater>
   <MizuLowWaterDesc>Você esta com pouca água.\n\nQuantia de água no armazenamento: {0}\nColonos e prisioneiros consumindo água: {1}\nDias para acabar a água: {2}\n\nFabrique, compre ou colete água.</MizuLowWaterDesc>

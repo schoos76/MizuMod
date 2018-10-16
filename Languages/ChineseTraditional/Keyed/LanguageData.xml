@@ -4,6 +4,7 @@
   <MizuWaterAmount>水量</MizuWaterAmount>
   <MizuConsumeWater>喝 {0}</MizuConsumeWater>
   <MizuNoWater>沒有水</MizuNoWater>
+  <MizuWaterUILabel>水</MizuWaterUILabel>
 
   <MizuLowWater>低水量</MizuLowWater>
   <MizuLowWaterDesc>你的儲水量降到危險水平。\n\n    儲水量： {0}\n    殖民者和囚犯的需求 {1}\n    天數: {2}\n\n尋找水源或者購買，趕緊找些水來。</MizuLowWaterDesc>
