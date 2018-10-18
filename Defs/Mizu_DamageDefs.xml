@@ -13,8 +13,8 @@
     <harmsHealth>false</harmsHealth>
     <combatLogRules>Damage_Extinguish</combatLogRules>
     <defaultDamage>10</defaultDamage>
-    <explosionBuildingDamageFactor>2</explosionBuildingDamageFactor>
-    <explosionPlantDamageFactor>0.5</explosionPlantDamageFactor>
+    <buildingDamageFactor>2</buildingDamageFactor>
+    <plantDamageFactor>0.5</plantDamageFactor>
     <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
     <explosionHeatEnergyPerCell>5</explosionHeatEnergyPerCell>
   </DamageDef>
