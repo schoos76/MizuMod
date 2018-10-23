@@ -57,9 +57,9 @@ namespace MizuMod
             this.compClass = typeof(CompWaterSource);
         }
 
-        public override IEnumerable<StatDrawEntry> SpecialDisplayStats()
+        public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
         {
-            foreach (var statDrawEntry in base.SpecialDisplayStats())
+            foreach (var statDrawEntry in base.SpecialDisplayStats(req))
             {
                 yield return statDrawEntry;
             }
