@@ -1,0 +1,20 @@
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="ModCheck.isModLoaded">
+				<modName>Prison Labor</modName>
+				<yourMod>No Water, No Life.</yourMod>
+			</li>
+			<li Class="PatchOperationInsert">
+				<xpath>*/ThinkTreeDef[defName = "PrisonLabor_WorkThinkTree"]//li[@Class = "PrisonLabor.JobGiver_BedTime"]</xpath>
+				<order>Append</order>
+				<value>
+					<li Class="MizuMod.JobGiver_GetWater"/>
+				</value>
+                        </li>
+                </operations>
+        </Operation>
+</Patch>
+
+  
