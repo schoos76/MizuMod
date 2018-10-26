@@ -101,7 +101,7 @@ namespace MizuMod
                 if (selPawn.IsColonistPlayerControlled)
                 {
                     StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.Append(string.Format(MizuStrings.FloatMenuGetWater.Translate(), this.parent.LabelNoCount));
+                    stringBuilder.Append(string.Format(MizuStrings.FloatMenuGetWater.Translate(), this.parent.LabelNoCount).CapitalizeFirst());
 
                     if (!this.parent.IsSociallyProper(selPawn))
                     {
@@ -120,9 +120,8 @@ namespace MizuMod
                             stringBuilder.AppendLine();
                             stringBuilder.Append(string.Format(string.Concat(
                                 " (",
-                                "ReservedBy".Translate(),
-                                ")"),
-                            p.Name.ToStringShort));
+                                "ReservedBy".Translate(p.LabelShort, p),
+                                ")")));
 
                             break;
                         }
