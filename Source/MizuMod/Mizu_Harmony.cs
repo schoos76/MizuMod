@@ -547,7 +547,9 @@ namespace MizuMod
     class Dialog_Trade_DoWindowContents
     {
     	static void Prefix(List<Thing> ___playerCaravanAllPawnsAndItems, List<Tradeable> ___cachedTradeables) {
-    		MizuCaravanUtility.DaysWorthOfWater_Trade(___playerCaravanAllPawnsAndItems, ___cachedTradeables);
+    		if (___playerCaravanAllPawnsAndItems !=null) {
+    			MizuCaravanUtility.DaysWorthOfWater_Trade(___playerCaravanAllPawnsAndItems, ___cachedTradeables);
+    		}
     	}
     	
     }
