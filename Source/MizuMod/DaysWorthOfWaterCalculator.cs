@@ -14,7 +14,7 @@ namespace MizuMod
     {
         public static float ApproxDaysWorthOfWater(List<TransferableOneWay> transferables, IgnorePawnsInventoryMode ignoreInventory)
         {
-            tmpThingCounts.Clear();
+            tmpThingDefCounts.Clear();
             tmpPawns.Clear();
 
             for (int i = 0; i < transferables.Count; i++)
@@ -31,12 +31,12 @@ namespace MizuMod
                     }
                     else
                     {
-                        tmpThingCounts.Add(new ThingCount(transferableOneWay.AnyThing, transferableOneWay.CountToTransfer));
+                    	tmpThingDefCounts.Add(new ThingDefCount(transferableOneWay.ThingDef, transferableOneWay.CountToTransfer));
                     }
                 }
             }
-            float result = DaysWorthOfWaterCalculator.ApproxDaysWorthOfWater(tmpPawns, tmpThingCounts, ignoreInventory);
-            tmpThingCounts.Clear();
+            float result = DaysWorthOfWaterCalculator.ApproxDaysWorthOfWater(tmpPawns, tmpThingDefCounts, ignoreInventory);
+            tmpThingDefCounts.Clear();
             tmpPawns.Clear();
             return result;
         }
@@ -58,22 +58,24 @@ namespace MizuMod
             return DaysWorthOfWaterCalculator.ApproxDaysWorthOfWater(caravan.PawnsListForReading, null, IgnorePawnsInventoryMode.DontIgnore);
         }
 
-        private static float ApproxDaysWorthOfWater(List<Pawn> pawns, List<ThingCount> extraWater, IgnorePawnsInventoryMode ignoreInventory)
+        private static float ApproxDaysWorthOfWater(List<Pawn> pawns, List<ThingDefCount> extraWater, IgnorePawnsInventoryMode ignoreInventory)
         {
             if (!DaysWorthOfWaterCalculator.AnyNonTerrainDrinkingPawn(pawns))
             {
                 return 1000f;
             }
-            List<ThingCount> tmpWater = new List<ThingCount>();
+            List<ThingDefCount> tmpWater = new List<ThingDefCount>();
             tmpWater.Clear();
+
             if (extraWater != null)
             {
+
                 for (int i = 0; i < extraWater.Count; i++)
                 {
                     bool canGetWater = false;
-                    for (int j = 0; j < extraWater[i].Thing.def.comps.Count; j++)
+                    for (int j = 0; j < extraWater[i].ThingDef.comps.Count; j++)
                     {
-                        var compprop = extraWater[i].Thing.def.comps[j] as CompProperties_WaterSource;
+                        var compprop = extraWater[i].ThingDef.comps[j] as CompProperties_WaterSource;
                         if (compprop != null && compprop.sourceType == CompProperties_WaterSource.SourceType.Item && compprop.waterAmount > 0.0f)
                         {
                             canGetWater = true;
@@ -85,6 +87,7 @@ namespace MizuMod
                         tmpWater.Add(extraWater[i]);
                     }
                 }
+
             }
             for (int j = 0; j < pawns.Count; j++)
             {
@@ -95,12 +98,12 @@ namespace MizuMod
                     {
                         if (innerContainer[k].CanGetWater())
                         {
-                            tmpWater.Add(new ThingCount(innerContainer[k], innerContainer[k].stackCount));
+                            tmpWater.Add(new ThingDefCount(innerContainer[k].def, innerContainer[k].stackCount));
                         }
                     }
                 }
             }
-            if (!tmpWater.Any<ThingCount>())
+            if (!tmpWater.Any<ThingDefCount>())
             {
                 return 0f;
             }
@@ -132,9 +135,9 @@ namespace MizuMod
                                 break;
                             }
                             CompProperties_WaterSource compprop = null;
-                            for (int x = 0; x < tmpWater[num2].Thing.def.comps.Count; x++)
+                            for (int x = 0; x < tmpWater[num2].ThingDef.comps.Count; x++)
                             {
-                                compprop = tmpWater[num2].Thing.def.comps[x] as CompProperties_WaterSource;
+                                compprop = tmpWater[num2].ThingDef.comps[x] as CompProperties_WaterSource;
                                 if (compprop != null && compprop.sourceType == CompProperties_WaterSource.SourceType.Item)
                                 {
                                     break;
@@ -174,12 +177,13 @@ namespace MizuMod
         private static List<Pawn> tmpPawns = new List<Pawn>();
         private static List<ThingCount> tmpThingCounts = new List<ThingCount>();
         private static List<ThingCount> tmpThingStackParts = new List<ThingCount>();
+        private static List<ThingDefCount> tmpThingDefCounts = new List<ThingDefCount>();
 
         public static float ApproxDaysWorthOfWaterLeftAfterTradeableTransfer(List<Thing> allCurrentThings, List<Tradeable> tradeables, IgnorePawnsInventoryMode ignoreInventory)
         {
             TransferableUtility.SimulateTradeableTransfer(allCurrentThings, tradeables, tmpThingStackParts);
             tmpPawns.Clear();
-            tmpThingCounts.Clear();
+            tmpThingDefCounts.Clear();
             for (int i = tmpThingStackParts.Count - 1; i >= 0; i--)
             {
                 Pawn pawn = tmpThingStackParts[i].Thing as Pawn;
@@ -189,17 +193,17 @@ namespace MizuMod
                 }
                 else
                 {
-                    tmpThingCounts.Add(new ThingCount(tmpThingStackParts[i].Thing, tmpThingStackParts[i].Count));
+                    tmpThingDefCounts.Add(new ThingDefCount(tmpThingStackParts[i].Thing.def, tmpThingStackParts[i].Count));
                 }
             }
             tmpThingStackParts.Clear();
-            float result = ApproxDaysWorthOfWater(tmpPawns, tmpThingCounts, ignoreInventory);
+            float result = ApproxDaysWorthOfWater(tmpPawns, tmpThingDefCounts, ignoreInventory);
             tmpPawns.Clear();
-            tmpThingCounts.Clear();
+            tmpThingDefCounts.Clear();
             return result;
         }
 
-        private static int BestEverGetWaterIndexFor(Pawn pawn, List<ThingCount> water)
+        private static int BestEverGetWaterIndexFor(Pawn pawn, List<ThingDefCount> water)
         {
             int num = -1;
             float num2 = 0f;
@@ -207,7 +211,7 @@ namespace MizuMod
             {
                 if (water[i].Count > 0)
                 {
-                    ThingDef thingDef = water[i].Thing.def;
+                    ThingDef thingDef = water[i].ThingDef;
                     if (MizuCaravanUtility.CanEverGetWater(thingDef, pawn))
                     {
                         float waterScore = MizuCaravanUtility.GetWaterScore(thingDef, pawn);
