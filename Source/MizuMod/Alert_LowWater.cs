@@ -27,9 +27,7 @@ namespace MizuMod
                 return string.Empty;
             }
             float totalWater = map.resourceCounter.TotalWater();
-            int num = map.mapPawns.FreeColonistsSpawnedCount + (from pr in map.mapPawns.PrisonersOfColony
-                                                                where pr.guest.GetsFood
-                                                                select pr).Count<Pawn>();
+            int num = map.mapPawns.FreeColonistsSpawnedCount + map.mapPawns.PrisonersOfColonyCount;
             int num2 = Mathf.FloorToInt(totalWater / (float)num);
             return string.Format(MizuStrings.AlertLowWaterDesc.Translate(), totalWater.ToString("F0"), num.ToStringCached(), num2.ToStringCached());
         }
