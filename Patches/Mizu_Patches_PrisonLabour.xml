@@ -10,7 +10,7 @@
 				<xpath>*/ThinkTreeDef[defName = "PrisonLabor_WorkThinkTree"]//li[@Class = "PrisonLabor.JobGiver_BedTime"]</xpath>
 				<order>Append</order>
 				<value>
-					<li Class="MizuMod.JobGiver_GetWater"/>
+					<li Class="MizuMod.JobGiver_GetWater_PrisonLabour"/>
 				</value>
                         </li>
                 </operations>
