@@ -142,6 +142,7 @@
     <Compile Include="JobDriver_WaterFeedPatient.cs" />
     <Compile Include="JobGiver_DrawWaterByPrisoner.cs" />
     <Compile Include="JobGiver_GetWater.cs" />
+    <Compile Include="JobGiver_GetWater_PrisonLabour.cs" />
     <Compile Include="JobGiver_PackWater.cs" />
     <Compile Include="MapComponent_DeepWaterGrid.cs" />
     <Compile Include="MapComponent_HiddenWaterSpot.cs" />

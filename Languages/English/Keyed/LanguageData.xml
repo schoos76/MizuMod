@@ -84,5 +84,7 @@
   <MizuSetDefault>Set Default</MizuSetDefault>
   <MizuGrowthRateFactorInNotWatering>Growth rate factor in NOT watering</MizuGrowthRateFactorInNotWatering>
   <MizuGrowthRateFactorInWatering>Growth rate factor in watering</MizuGrowthRateFactorInWatering>
-  
+
+  <MizuPoisonedByDirtyWater>Drank dirty water from ground.</MizuPoisonedByDirtyWater>
+   
 </LanguageData>
