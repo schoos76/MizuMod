@@ -116,7 +116,7 @@ namespace MizuMod
                     actor.jobs.EndCurrentJob(JobCondition.Succeeded, true);
                     return;
                 }
-                
+
                 curJob.bill.Notify_IterationCompleted(actor, null);
 
                 // 水汲み記録追加
@@ -216,7 +216,7 @@ namespace MizuMod
                     totalWaterVolume += compprop.waterVolume * tspc.Count;
                     totalWaterType = totalWaterType.GetMinType(compprop.waterType);
                 }
-                
+
                 var billGiver = curJob.GetTarget(billGiverIndex).Thing as Building_WaterNetWorkTable;
                 if (billGiver == null)
                 {
@@ -470,7 +470,7 @@ namespace MizuMod
             Toil toil = new Toil();
             toil.initAction = delegate
             {
-                var actor = toil.actor;
+            	var actor = toil.actor;
                 var cell = actor.CurJob.GetTarget(cellIndex).Cell;
                 var need_water = actor.needs.water();
                 if (need_water == null)
@@ -520,11 +520,10 @@ namespace MizuMod
                     actor.health.AddHediff(HediffMaker.MakeHediff(HediffDefOf.FoodPoisoning, actor));
                     if (PawnUtility.ShouldSendNotificationAbout(actor))
                     {
-                        Messages.Message("MessageFoodPoisoning".Translate(new object[]
-                        {
-                            actor.LabelShort,
-                            "AreaLower".Translate()
-                        }).CapitalizeFirst(), actor, MessageTypeDefOf.NegativeEvent);
+                    	var water = ThingMaker.MakeThing(MizuUtility.GetWaterThingDefFromWaterType(waterType));
+                    	string cause = "MizuPoisonedByDirtyWater".Translate().CapitalizeFirst();
+                    	string text = "MessageFoodPoisoning".Translate(actor.LabelShort, water.ToString(), cause, actor.Named("PAWN"), water.Named("FOOD")).CapitalizeFirst();
+                    	Messages.Message(text, actor, MessageTypeDefOf.NegativeEvent);
                     }
                 }
 
@@ -696,7 +695,7 @@ namespace MizuMod
                 var thing = actor.CurJob.GetTarget(buildingIndex).Thing;
                 var comp = thing.TryGetComp<CompWaterSource>();
                 var building = thing as IBuilding_DrinkWater;
-                
+
                 if (actor.needs == null || actor.needs.water() == null || building == null || comp == null || !comp.IsWaterSource)
                 {
                     actor.jobs.EndCurrentJob(JobCondition.Incompletable);
@@ -800,7 +799,7 @@ namespace MizuMod
                     actor.jobs.EndCurrentJob(JobCondition.Incompletable, true);
                     return;
                 }
-                
+
                 actor.rotationTracker.FaceCell(actor.Position);
                 actor.jobs.curDriver.ticksLeftThisToil = drawTicks;
             };
