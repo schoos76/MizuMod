@@ -1,13 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>No Water, No Life [1.0] </name>
+  <name>No Water, No Life</name>
   <author>himesama, schoos</author>
-  <targetVersion>1.0.2059</targetVersion>
+  <packageId>himesama1301.MizuMod</packageId>
   <url>https://github.com/schoos76/MizuMod</url>
+  <supportedVersions>
+    <li>1.1</li>
+    <li>1.2</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  
   <description>
 
-for RimWorld 1.0
-mod version 1.7.2
+for RimWorld 1.1
+mod version 1.8.1
 
 Description
 
@@ -23,12 +35,6 @@ The downloaded zip file contains all the data as well as the source code.
 
 License
 
-This mod includes the following
-- Harmony (MIT License)
-
-This mod depends on ModCheck mod.
-
-The other files are licensed under the Unlicense. 
 https://github.com/schoos76/MizuMod/blob/master/LICENSE_Unlicense
 
 Contributors
