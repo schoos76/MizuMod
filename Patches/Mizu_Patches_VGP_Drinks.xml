@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>VGP Garden Drinks</li>
+			<!-- li>
+			     <packageId>dismarzero.VGP.VGPGardenDrinks</packageId>
+			</li -->
+		</mods>
+		<match Class="PatchOperationSequence">
+			<!-- success>Always</success -->
+			<operations>
+			<!-- saki -->
+			<!-- cider -->
+			<!-- rum -->
+			<!-- Wine -->
+			<!-- strawberrywine -->
+			<!-- vodka -->
+			<!-- tequila -->
+			<!-- whisky -->
+			<!-- BrownAle -->
+			<!-- Fruitshine -->
+			<li Class="PatchOperationAdd">
+   				<xpath>Defs/ThingDef[defName = "saki" or defName = "cider" or defName = "rum" or defName = "Wine" or defName = "strawberrywine" or defName = "vodka" or defName = "tequila" or defName = "whisky" or defName = "BrownAle" or defName = "Fruitshine"]</xpath>
+				<value>
+					<comps>
+						<li Class="MizuMod.CompProperties_WaterSource">
+							<sourceType>Item</sourceType>
+							<getSound>Ingest_Beer</getSound>
+							<baseDrinkTicks>100</baseDrinkTicks>
+							<waterType>NormalWater</waterType>
+							<needManipulate>true</needManipulate>
+							<waterAmount>0.15</waterAmount>
+							<maxNumToGetAtOnce>1</maxNumToGetAtOnce>
+							<waterVolume>0.5</waterVolume>
+						</li>
+					</comps>
+				</value>
+			</li>
+			<!-- AppleSoda -->
+			<!-- BananaSoda -->
+			<!-- GrapeSoda -->
+			<!-- OrangeSoda -->
+			<!-- PeachSoda -->
+			<!-- PineappleSoda -->
+			<!-- BlueberrySoda -->
+			<!-- WatermelonSoda -->
+ 			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName = "AppleSoda" or defName = "BananaSoda" or defName = "GrapeSoda" or defName = "OrangeSoda" or defName = "PeachSoda" or defName = "PineappleSoda" or defName = "BlueberrySoda" or defName = "WatermelonSoda"]</xpath>
+				<value>
+					<comps>
+						<li Class="MizuMod.CompProperties_WaterSource">
+							<sourceType>Item</sourceType>
+							<getSound>Ingest_Beer</getSound>
+							<baseDrinkTicks>100</baseDrinkTicks>
+							<waterType>NormalWater</waterType>
+							<needManipulate>true</needManipulate>
+							<waterAmount>0.15</waterAmount>
+							<maxNumToGetAtOnce>1</maxNumToGetAtOnce>
+							<waterVolume>0.5</waterVolume>
+						</li>
+					</comps>
+				</value>
+			</li>
+			<!-- CloudberrySoda -->
+			<!-- GooseberrySoda -->
+			<!-- FigSoda -->
+			<!-- DateSoda -->
+			<!-- CoconutSoda -->
+			<!-- CherrySoda -->
+ 			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName = "CloudberrySoda" or defName = "GooseberrySoda" or defName = "FigSoda" or defName = "DateSoda" or defName = "CoconutSoda" or defName = "CherrySoda"]</xpath>
+				<value>
+					<comps>
+						<li Class="MizuMod.CompProperties_WaterSource">
+							<sourceType>Item</sourceType>
+							<getSound>Ingest_Beer</getSound>
+							<baseDrinkTicks>100</baseDrinkTicks>
+							<waterType>NormalWater</waterType>
+							<needManipulate>true</needManipulate>
+							<waterAmount>0.15</waterAmount>
+							<maxNumToGetAtOnce>1</maxNumToGetAtOnce>
+							<waterVolume>0.5</waterVolume>
+						</li>
+					</comps>
+				</value>
+			</li>
+			<!-- VegetableKvass -->
+			<!-- KvassSoda -->
+			<!-- FruitKvass -->
+ 			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName = "VegetableKvass" or defName = "KvassSoda" or defName = "FruitKvass"]</xpath>
+				<value>
+					<comps>
+						<li Class="MizuMod.CompProperties_WaterSource">
+							<sourceType>Item</sourceType>
+							<getSound>Ingest_Beer</getSound>
+							<baseDrinkTicks>100</baseDrinkTicks>
+							<waterType>NormalWater</waterType>
+							<needManipulate>true</needManipulate>
+							<waterAmount>0.15</waterAmount>
+							<maxNumToGetAtOnce>1</maxNumToGetAtOnce>
+							<waterVolume>0.5</waterVolume>
+						</li>
+					</comps>
+				</value>
+			</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>
